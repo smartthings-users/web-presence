@@ -6,7 +6,7 @@
  */
  // for the UI
  metadata {
- 	definition (name: "webPresence", namespace: "dianoga", author: "Brian Steere") {
+ 	definition (name: "webPresence", namespace: "dianoga", author: "Brian Steere", oauth: true) {
  		capability "Presence Sensor"
 
  		command "away"
@@ -19,9 +19,10 @@
 
 	tiles {
 		standardTile("presence", "device.presence", width: 2, height: 2, canChangeBackground: true) {
-			state "present", labelIcon:"st.presence.tile.present", backgroundColor:"#53a7c0"
-			state "not present", labelIcon:"st.presence.tile.not-present", backgroundColor:"#ffffff"
+			state "present", label: "Present", labelIcon:"st.presence.tile.present", backgroundColor:"#53a7c0", action: "away"
+			state "not present", label: "Not Present", labelIcon:"st.presence.tile.not-present", backgroundColor:"#ffffff", action: "present"
 		}
+        
 		main "presence"
 		details(["presence"])
 	}
